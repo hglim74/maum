@@ -63,4 +63,6 @@ async def serve_file(file_path: str):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    # Cloud Run 환경변수 PORT를 가져오고, 없으면 8080을 사용
+    port = int(os.environ.get("PORT", 8080))
+    uvicorn.run("infrastructure.frameworks.web.main:app", host="0.0.0.0", port=port)

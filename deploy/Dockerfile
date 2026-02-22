@@ -26,4 +26,5 @@ ENV PORT=8080
 ENV PYTHONUNBUFFERED=1
 
 # Run the application
-CMD ["uvicorn", "infrastructure.frameworks.web.main:app", "--host", "0.0.0.0", "--port", "8080"]
+# 환경변수 PORT를 사용하여 Uvicorn 실행, 0.0.0.0 바인딩 필수
+CMD ["sh", "-c", "uvicorn infrastructure.frameworks.web.main:app --host 0.0.0.0 --port ${PORT:-8080}"]
