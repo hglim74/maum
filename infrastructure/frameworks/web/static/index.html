@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마음커넥트 (Mind Connect) - AI 심리상담</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app" class="app-container">
+        <!-- P1. 메인 홈 -->
+        <section id="home" class="view active">
+            <div class="content">
+                <h1 class="logo">마음커넥트</h1>
+                <p class="subtitle">언제 어디서나 당신의 마음을 공감하고 이해해 주는 AI 상담사입니다.</p>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&q=80&w=300" alt="Mindfulness">
+                </div>
+                <button id="start-btn" class="btn primary">상담 시작하기</button>
+            </div>
+        </section>
+
+        <!-- P2. AI 채팅 상담실 -->
+        <section id="counseling" class="view">
+            <header class="chat-header">
+                <button class="back-btn">←</button>
+                <h2>상담실</h2>
+                <button id="finish-btn" class="btn secondary">상담 종료</button>
+            </header>
+            <div id="chat-messages" class="chat-messages">
+                <!-- Messages will be injected here -->
+            </div>
+            <div class="typing-indicator hidden">AI가 답변을 생각하고 있어요...</div>
+            <div class="chat-input-area">
+                <textarea id="chat-input" placeholder="지금 당신의 속마음을 들려주세요..."></textarea>
+                <button id="send-btn" class="btn icon">↑</button>
+            </div>
+        </section>
+
+        <!-- P3. 오늘의 마음 리포트 -->
+        <section id="report" class="view">
+            <div class="content">
+                <h2>오늘의 마음 리포트</h2>
+                <div class="card report-card">
+                    <h3>상담 요약</h3>
+                    <p id="report-summary"></p>
+                    <div class="emotion-graph">
+                        <!-- Graph representation -->
+                        <div id="graph-container"></div>
+                    </div>
+                </div>
+                <button id="to-history-btn" class="btn primary">모든 기록 보기</button>
+                <button id="to-home-btn" class="btn text">홈으로 돌아가기</button>
+            </div>
+        </section>
+
+        <!-- P4. 상담 히스토리 -->
+        <section id="history" class="view">
+            <header>
+                <button class="back-btn-home">←</button>
+                <h2>상담 기록</h2>
+            </header>
+            <div id="history-list" class="list-container">
+                <!-- History items will be injected here -->
+            </div>
+        </section>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

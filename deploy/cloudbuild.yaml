@@ -1,0 +1,29 @@
+steps:
+  # 1. Docker Build
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/mind-connect', '-f', 'deploy/Dockerfile', '.']
+
+  # 2. Docker Push
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/mind-connect']
+
+  # 3. Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'mind-connect'
+      - '--image'
+      - 'gcr.io/$PROJECT_ID/mind-connect'
+      - '--region'
+      - 'asia-northeast3'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+
+images:
+  - 'gcr.io/$PROJECT_ID/mind-connect'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
